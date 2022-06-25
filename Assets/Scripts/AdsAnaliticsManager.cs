@@ -387,7 +387,7 @@ public class AdsAnaliticsManager : MonoBehaviour
     public static List<IRewardedObserver> rewardedObservers = new List<IRewardedObserver>();
     public static List<IInterstitialObserver> interstitialObservers = new List<IInterstitialObserver>();
     public static List<IConsentObserver> consentObservers = new List<IConsentObserver>();
-    public static List<IAnalytics> analytics = new List<IAnalytics>();
+    private static List<IAnalytics> _analytics = new List<IAnalytics>();
 
     BaseAd[] ads;
 
@@ -402,7 +402,7 @@ public class AdsAnaliticsManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             DOTween.Sequence().AppendInterval(1f).AppendCallback(() =>
             {
-                analytics.Add(new YandexAnalytics());
+                _analytics.Add(new YandexAnalytics());
 
 #if UNITY_ANDROID
                 ///UnityEngine.Advertisements.Advertisement.Initialize("3044022");
@@ -455,7 +455,7 @@ public class AdsAnaliticsManager : MonoBehaviour
     {
         try
         {
-            foreach (var an in analytics)
+            foreach (var an in _analytics)
             {
                 an.LevelFinish(level, result, time);
             }
@@ -470,7 +470,7 @@ public class AdsAnaliticsManager : MonoBehaviour
     {
         try
         {
-            foreach (var an in analytics)
+            foreach (var an in _analytics)
             {
                 an.LevelStart(level);
             }
@@ -485,7 +485,7 @@ public class AdsAnaliticsManager : MonoBehaviour
     {
         try
         {
-            foreach (var an in analytics)
+            foreach (var an in _analytics)
             {
                 an.Purchase(id, currency, revenue);
             }
@@ -538,7 +538,7 @@ public class AdsAnaliticsManager : MonoBehaviour
             loadedAds[UnityEngine.Random.Range(0, loadedAds.Count)].Showinterstitial();
         }
 
-        foreach(var an in analytics)
+        foreach(var an in _analytics)
         {
             an.ShowInterstitial();
         }
@@ -565,7 +565,7 @@ public class AdsAnaliticsManager : MonoBehaviour
             loadedAds[UnityEngine.Random.Range(0, loadedAds.Count)].ShowVideo();
         }
 
-        foreach (var an in analytics)
+        foreach (var an in _analytics)
         {
             an.ShowRewarded();
         }
@@ -578,7 +578,7 @@ public class AdsAnaliticsManager : MonoBehaviour
             ad.SetGDRP(value);
         }
 
-        foreach (var an in analytics)
+        foreach (var an in _analytics)
         {
             an.SetGDRP(value);
         }

@@ -95,8 +95,8 @@ public class PlayerState : ScriptableObject
             }
         }
     }
-    
-    public void WaveComplete()
+
+    private void WaveComplete()
     {
         wave++;
         foreach (var observer in waveObservers)
@@ -105,7 +105,7 @@ public class PlayerState : ScriptableObject
         }
     }
 
-    public void LevelComplete()
+    private void LevelComplete()
     {
         foreach (var observer in levelObservers)
         {

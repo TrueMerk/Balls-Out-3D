@@ -1,6 +1,4 @@
 ﻿using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,8 +17,7 @@ public class FinishMenu : MonoBehaviour, ILevelObserver
     public Text ballsText;
 
     public GameObject twentyBalls;
-
-    //public Text BonusText;
+    
     public GameObject VideoIcon;
     public GameObject NoThankYouButton;
     public GameObject NonBonus;
@@ -68,25 +65,12 @@ public class FinishMenu : MonoBehaviour, ILevelObserver
 
         });
     }
-
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-    }
-
+    
     private void Awake()
     {
         instance = this;
-
-
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         transform.localPosition = Vector3.zero;

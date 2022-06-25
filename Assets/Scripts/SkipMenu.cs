@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class SkipMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+  
+    private void Start()
     {
         gameObject.SetActive(false);
         transform.localPosition = Vector3.zero;
     }
-
     
-
     public void Yes()
     {
         AdsAnaliticsManager.instance.ShowRewarded((bool result)=> {
