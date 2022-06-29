@@ -21,16 +21,6 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isContactBall = collision.other.GetComponent<Ball>() != null;
-       // if (collision.contactCount > 1) return;
-
-        /* var vel = GetComponent<Rigidbody>().velocity.magnitude;
-         Debug.Log("Ball Contact " + vel);
-         //if (vel > 1.5f)
-         {
-             foreach (var o in Level.instance.playerState.contactObservers)
-             {
-                 o.OnContactBall(this, vel);
-             }
-         }*/
+       
     }
 }

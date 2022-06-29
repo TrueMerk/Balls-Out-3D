@@ -51,7 +51,7 @@ public class PlayerState : ScriptableObject
 
     public int best;
     public bool ads;
-
+    public int _b;
     public int level;
 
     public int totalBalls;
@@ -163,6 +163,7 @@ public class PlayerState : ScriptableObject
         PlayerPrefs.SetInt("best", best);
         PlayerPrefs.SetInt("level", level);
         PlayerPrefs.SetInt("vibrate", vibrate ? 1 : 0);
+        PlayerPrefs.SetInt("orange",_b);
     }
 
     public void Load()
@@ -170,5 +171,6 @@ public class PlayerState : ScriptableObject
         best = PlayerPrefs.GetInt("best");
         level = PlayerPrefs.GetInt("level");
         vibrate = PlayerPrefs.GetInt("vibrate", 1) == 1;
+        _b = PlayerPrefs.GetInt("orange", _b);
     }
 }

@@ -12,7 +12,7 @@ public class NextLevelEditor : Editor
 
         if (GUILayout.Button("Next Level"))
         {
-            FinishMenu.instance.NoThankYou();
+            FinishMenu.Instance.NoThankYou();
         }
     }
 }

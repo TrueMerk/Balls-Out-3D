@@ -10,9 +10,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300018, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
 --- !u!1 &2507802783034253947
 GameObject:
@@ -66,6 +66,7 @@ MonoBehaviour:
   roof: {fileID: 5075909649857618397}
   isNeedLoonka: 1
   isNeedShadows: 1
+  isBoss: 0
 --- !u!136 &8099376822522992802
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -180,6 +181,10 @@ PrefabInstance:
       value: watermelon
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -192,6 +197,10 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.5
       objectReference: {fileID: 0}
@@ -202,14 +211,6 @@ PrefabInstance:
     - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: e24ca9297eda61c48a1d9f269b07ac1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

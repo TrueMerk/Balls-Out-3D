@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FinishMenu : MonoBehaviour, ILevelObserver
 {
-    public static FinishMenu instance;
+    public static FinishMenu Instance;
     public PlayerState playerState;
     public GameConfig gameConfig;
 
@@ -22,13 +22,13 @@ public class FinishMenu : MonoBehaviour, ILevelObserver
     public GameObject NoThankYouButton;
     public GameObject NonBonus;
 
-    bool bonus;
+   private bool _bonus;
 
     public void OnLevelComplete()
     {
         DOTween.Sequence().AppendInterval(RemoteSettings.GetFloat("FinishMenuDelay", 1.5f)).AppendCallback(() =>
         {
-            bool isNewBest = playerState.score > playerState.best;
+            var isNewBest = playerState.score > playerState.best;
             if (isNewBest)
             {
                 newBestText.gameObject.SetActive(true);
@@ -52,23 +52,17 @@ public class FinishMenu : MonoBehaviour, ILevelObserver
 
             if (!isExtraBalls && Random.value < RemoteSettings.GetFloat("BonusLevelChance", 0.3f) && playerState.level > RemoteSettings.GetInt("AdsMinimumLevel", 10))
             {
-                bonus = true;
+                _bonus = true;
             }
-            else
-            {
-            }
-
-            NoThankYouButton.SetActive(bonus);
-            VideoIcon.SetActive(bonus);
-            //BonusText.gameObject.SetActive(bonus);
-            NonBonus.SetActive(!bonus);
-
+            NoThankYouButton.SetActive(_bonus);
+            VideoIcon.SetActive(_bonus);
+            NonBonus.SetActive(!_bonus);
         });
     }
     
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     
     void Start()
@@ -111,7 +105,7 @@ public class FinishMenu : MonoBehaviour, ILevelObserver
 
     public void Next()
     {
-        if (bonus)
+        if (_bonus)
         {
             if (AdsAnaliticsManager.instance.CanShowRewarded())
             {

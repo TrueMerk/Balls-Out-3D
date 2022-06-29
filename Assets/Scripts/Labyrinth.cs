@@ -31,17 +31,6 @@ public class Labyrinth : MonoBehaviour
     private void Awake()
     {
         rotationMult = RemoteSettings.GetFloat("rotationMult", 4f);
-        //instance = this;
-        /*if(!isNeedShadows)
-        {
-            var meshe = GetComponentsInChildren<MeshRenderer>();
-            foreach(var mesh in meshe)
-            {
-                mesh.receiveShadows = false;
-                mesh.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            }
-        }*/
-
         
     }
 
@@ -49,7 +38,7 @@ public class Labyrinth : MonoBehaviour
     {
         activationDelay = 0.2f;
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         var meshe = GetComponentsInChildren<Collider>();
@@ -67,8 +56,7 @@ public class Labyrinth : MonoBehaviour
             ball.transform.SetParent(null, true);
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(activationDelay > 0)

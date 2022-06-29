@@ -37,12 +37,8 @@ public class MazeGenerator : MonoBehaviour
     static int[] maxLong = new int[attempts];
     static MazeEdge[][] mazes = new MazeEdge[attempts][];
 
-    void Start()
-    {
-        //Draw();
-    }
 
-    public MazeNode[] BuildTree()
+    private MazeNode[] BuildTree()
     {
         var nodes = new MazeNode[finish + 1];
         for(int i = 0; i < finish+1; i++)

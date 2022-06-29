@@ -132,6 +132,12 @@ MonoBehaviour:
   - Assets/Resources/Prefabs/Labyrinth_hex_11.prefab
   - Assets/Resources/Prefabs/Labyrinth_hex_12.prefab
   - Assets/Resources/Prefabs/Fun/Labyrinth_fun_7.prefab
+  - Assets/Resources/Prefabs/Fruits/Labyrinth_berry.prefab
+  - Assets/Resources/Prefabs/Fruits/Labyrinth_grapes.prefab
+  - Assets/Resources/Prefabs/Fruits/Labyrinth_orange.prefab
+  - Assets/Resources/Prefabs/Fun/Labyrinth_fun_7.prefab
+  - Assets/Resources/Prefabs/Fun/Labyrinth_fun_7.prefab
+  - Assets/Resources/Prefabs/Fun/Labyrinth_fun_7.prefab
   fanLabyrinthsStr:
   - Assets/Resources/Prefabs/Fruits/Labyrinth_apple.prefab
   - Assets/Resources/Prefabs/Fruits/Labyrinth_berry.prefab
@@ -148,6 +154,8 @@ MonoBehaviour:
   ball: {fileID: 4803738439568453723, guid: ef7f45f562fed4940b8d891a8ea3dc88, type: 3}
   ballBig: {fileID: 4803738439568453723, guid: b7516d6d81dd31c44af5ec7ddbb50a19, type: 3}
   ballMid: {fileID: 4803738439568453723, guid: 6e1e1ab17a5d0ca49aabbbb775f4175e, type: 3}
+  ballFruit: {fileID: 1362267563301238168, guid: f0d992564d387e945ac8c2ecf1796ffe,
+    type: 3}
   wavesCount: 3
   backgroundsStr:
   - Assets/Resources/Textures/BG1.png

@@ -55,11 +55,7 @@ public class GameMenu : MonoBehaviour
     {
         playerState.vibrate = !playerState.vibrate;
         playerState.Save();
-
-        
-
         UpdateVibrate();
-
     }
 
     public void SwitchSound()
@@ -67,9 +63,7 @@ public class GameMenu : MonoBehaviour
         var v = PlayerPrefs.GetInt("Sound", 1);
         v = (v + 1) % 2;
         PlayerPrefs.SetInt("Sound", v);
-
         playerState.ChangeSound(v == 1);
-
         UpdateSound();
     }
 

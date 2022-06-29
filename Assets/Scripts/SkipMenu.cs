@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SkipMenu : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class SkipMenu : MonoBehaviour
             if (result)
             {
                 PlayerPrefs.SetInt("SkipAds", 1);
-                FinishMenu.instance.Next();
+                FinishMenu.Instance.Next();
             }
         });
     }

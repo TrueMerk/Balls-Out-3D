@@ -46,7 +46,7 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
 
     public GameObject board1;
     public GameObject board2;
-
+    public bool _b = true;
 
     public GameObject NoAdsButton;
     public GameObject BannerBack;
@@ -106,10 +106,11 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
         playerState.captureBallObservers.Remove(this);
     }
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         Application.targetFrameRate = 60;
+        PlayerPrefs.SetInt("orange",playerState._b);
 
 #if UNITY_IOS
         /*var delta = Vector2.up * (Screen.height - Screen.safeArea.height - Screen.safeArea.y);
@@ -371,7 +372,7 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
     private void SpawnBalls( Labyrinth newLab, int max)
     {
         var totalMax = RemoteSettings.GetInt("maxBalls", 450);
-        var hasDifferentBalls = RemoteSettings.GetBool("hasDifferentBalls", false);
+        var hasDifferentBalls = RemoteSettings.GetBool("hasDifferentBalls", true);
         var deep = 2;
 
         var sq = (int)Mathf.Sqrt(max / 5) + 1;
@@ -386,14 +387,26 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
                 else if (ballSize < 9) ballSize = 1;
                 else if (ballSize < 10) ballSize = 2;
                 if (count >= max) continue;
-                var ball = Instantiate(ballSize == 2 ? gameConfig.ballBig : ballSize == 1 ? gameConfig.ballMid : gameConfig.ball, newLab.transform);
+                Ball ball;
+                if (playerState._b == 1)
+                {
+                     ball = Instantiate(gameConfig.ballFruit, newLab.transform);
+                     Debug.Log("Фруктовые шарики");
+                }
+                else
+                {
+                     ball = Instantiate(ballSize == 2 ? gameConfig.ballBig : ballSize == 1 ? gameConfig.ballMid : gameConfig.ball, newLab.transform);
+                     Debug.Log("Обычные шарики");
+                }
+                 
                 ball.transform.localPosition = Vector3.right * (j % sq - sq / 2) * 0.1f + Vector3.down * (j / sq - sq / 2) * 0.1f + Vector3.forward * d * 0.1f;
-
+                
                 var scale = RemoteSettings.GetFloat(ballSize == 0 ? "ballSize0" : ballSize == 1 ? "ballSize1" : "ballSize2", 1f);
                 ball.transform.localScale *= (scale - 1f) * (totalMax - max) / totalMax + 1f;
 
                 balls.Add(ball);
                 count++;
+                
             }
         }
 
@@ -485,7 +498,7 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
         
     }
     public static float rotsum = 0f;
-    // Update is called once per frame
+   
     void Update()
     {
         
@@ -596,6 +609,8 @@ public class Level : MonoBehaviour, IWaveObserver, ILevelObserver, ICaptureBallO
         gameMenu.SetActive(false);
 
         AdsAnaliticsManager.instance.TrackLevelFinish(playerState.level, "win", Time.time - levelStartTime);
+
+        playerState._b = 0;
     }
 
     public void OnCaptureBall(Ball ball)
